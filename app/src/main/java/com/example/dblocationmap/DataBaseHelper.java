@@ -99,4 +99,20 @@ public class DataBaseHelper extends SQLiteOpenHelper{
         return res;
     }
 
+    public boolean updateData(String id, String lat, String lon){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(col_1,id);
+        contentValues.put(col_2,lat);
+        contentValues.put(col_3,lon);
+        db.update(TABLE_NAME, contentValues, "ID=?",new String[]{id});
+        return true;
+    }
+
+    public Integer deleteData(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME,"ID=?",new String[]{id});
+    }
+
 }

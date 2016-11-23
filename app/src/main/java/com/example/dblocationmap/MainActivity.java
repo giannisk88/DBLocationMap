@@ -36,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     Button submit;
     Button showButton;
+    EditText editId;
+    Button buttonUpdate;
+    Button buttonDelete;
     public EditText editText;
     public static double lat;
     public static double lon;
@@ -103,6 +106,9 @@ public class MainActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.button);
         submit = (Button) findViewById(R.id.submitbutton);
         //editText = (EditText) findViewById(R.id.editText);
+        editId = (EditText) findViewById(R.id.editId);
+        buttonUpdate = (Button) findViewById(R.id.updateButton);
+        buttonDelete = (Button) findViewById(R.id.deleteButton);
         showButton = (Button) findViewById(R.id.showbutton);
         mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -255,6 +261,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //new end
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Integer deleteRows = myDb.deleteData(editId.getText().toString());
+                if(deleteRows != 0)
+                    Toast.makeText(MainActivity.this, "Data deleted successfully", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(MainActivity.this, "Data doesn't deleted. Please try again.", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String latitude = Double.toString(lat);
+                String longitude = Double.toString(lon);
+
+                boolean isUpdate = myDb.updateData(editId.getText().toString(),latitude,longitude);
+                if (isUpdate == true)
+                    Toast.makeText(MainActivity.this, "Data updated successfully", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(MainActivity.this, "Data doesn't updated. Please try again.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public void showMessage(String title, String message){
