@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
     EditText editId;
     Button buttonUpdate;
     Button buttonDelete;
-    public EditText editText;
     public static double lat;
     public static double lon;
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
@@ -65,29 +64,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-    /**
-    //for the database
-    public void addData(){
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String latitude = Double.toString(lat);
-                String longitude = Double.toString(lon);
-
-
-                boolean isInserted = myDb.insertData(latitude,longitude);
-                if(isInserted == true)
-                    Toast.makeText(MainActivity.this, "Data inserted successfully!", Toast.LENGTH_LONG).show();
-                else
-                    Toast.makeText(MainActivity.this, "Data doesn't inserted. Please try again.", Toast.LENGTH_LONG).show();
-                //Toast.makeText(MainActivity.this, "Lat:"+lat+"\n"+"lon:"+lon,Toast.LENGTH_LONG).show();
-            }
-        });
-    }
-    */
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,28 +194,7 @@ public class MainActivity extends AppCompatActivity {
                 //new end
             }
         });
-        //old start
-        /**showButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Cursor res = myDb.getAllData();
-                //if the res is 0 means that no data were found in the database
-                if (res.getCount() == 0) {
-                    showMessage("Error","Nothing found!");
-                    return;
-                }else {   //i use this to show the data
-                    StringBuffer buffer = new StringBuffer();
-                    while (res.moveToNext()) {
-                        //i put the result in the buffer
-                        buffer.append("Id: " + res.getString(0) + "\n");
-                        buffer.append("EditText: " + res.getString(1) + "\n");
-                        showMessage("Data",buffer.toString());
-                        }
-                    }
-            }
-        });*/
-        //old end
-        //new start
+
         showButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
