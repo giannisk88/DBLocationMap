@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
         }
         tv2.setText(mSB.toString());
 
-
+    //Database actions
 
         //Create an on click listener to the button
         button.setOnClickListener(new View.OnClickListener() {
@@ -241,6 +241,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Data doesn't updated. Please try again.", Toast.LENGTH_LONG).show();
             }
         });
+
     }
 
     public void showMessage(String title, String message){
