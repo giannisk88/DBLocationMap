@@ -10,6 +10,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -98,7 +99,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                 Double longitude = res.getDouble(2);
                 LatLng position = new LatLng(latitude,longitude);
                 Toast.makeText(MapActivity.this, " "+latitude+" "+longitude, Toast.LENGTH_LONG).show();
-                mMap.addMarker(new MarkerOptions().position(position).title("I was here"));
+                mMap.addMarker(new MarkerOptions().position(position).title("I was here").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 
             }
         }
